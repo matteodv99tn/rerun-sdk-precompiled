@@ -1,0 +1,7 @@
+Package: rerun-cpp-sdk
+Version: 0.20-3
+Section: development
+Priority: optional
+Architecture: amd64
+Maintainer: Matteo Dalle Vedove <matteo.dallevedove@unitn.it>
+Description: Pre-compiled binary for the rerun.io cpp sdk

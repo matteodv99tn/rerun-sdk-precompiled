@@ -1,0 +1,29 @@
+name: relase
+
+on:
+  push:
+    tags:
+      - "prerelease"
+
+jobs:
+  export-package:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get dependencies
+        run: sudo ./install_prerequisites.sh
+
+      - name: Build targets
+        run: make all
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            rerun-cpp-sdk_0.20_3.deb
+            rerun-cpp-sdk-0.20.3.tar.gz

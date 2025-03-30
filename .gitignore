@@ -1,0 +1,7 @@
+*.zip
+*.tar.gz
+*.deb
+src/
+build/
+install/
+deb-build/

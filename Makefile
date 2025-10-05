@@ -1,5 +1,5 @@
-RERUN_VERSION_MAJOR = 20
-RERUN_VERSION_MINOR = 3
+RERUN_VERSION_MAJOR = 25
+RERUN_VERSION_MINOR = 1
 RERUN_VERSION = 0.$(RERUN_VERSION_MAJOR).$(RERUN_VERSION_MINOR)
 ZIP_FILE = rerun_cpp_sdk.zip
 TAR_FILE = rerun_cpp_sdk-$(RERUN_VERSION).tar.gz
@@ -31,6 +31,8 @@ $(SRC_DIR): $(ZIP_FILE)
 	@echo "Unzipping content of $(ZIP_FILE) into $(SRC_DIR)"
 	@unzip $(ZIP_FILE) -d $(SRC_DIR)
 	@mv $(SRC_DIR)/rerun_cpp_sdk/* $(SRC_DIR)
+	sed -i 's/add_library(rerun_sdk/& SHARED/' $(SRC_DIR)/CMakeLists.txt
+
 
 $(BUILD_DIR): $(SRC_DIR)
 	@echo "Configuring CMake build into $(BUILD_DIR)"
